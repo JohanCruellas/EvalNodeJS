@@ -15,8 +15,11 @@ const server = createServer((request, response) => {
     if (request.url === '/') {
         response.end(readFileSync('./view/home.html'));
     }
-});
 
+    else {
+        response.end(readFileSync('./view/404.html'))
+    }
+});
 
 server.listen(process.env.APP_PORT, () => {
     console.log(process.env)
