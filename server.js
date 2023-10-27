@@ -1,19 +1,54 @@
 import 'dotenv/config';
+import { students } from './data/data.js';
+import { addStudent, deleteStudent, generateStudentsPage } from './utils.js';
 import { createServer } from 'node:http'
-import { readFileSync, writeFileSync } from 'node:fs';
-
-const students = [
-    { name : "Sonia", birth : "2019-14-05"},
-    { name : "Antoine", birth : "2000-12-05"},
-    { name : "Alice", birth : "1990-14-09"},
-    { name : "Sophie", birth : "2001-10-02"},
-    { name : "Bernard", birth : "1980-21-08"}
-];
+import { readFileSync } from 'node:fs';
+import * as url from 'node:url';
 
 const server = createServer((request, response) => {
     response.setHeader('Content-Type', 'text/html');
     if (request.url === '/') {
         response.end(readFileSync('./view/home.html'));
+    }
+
+    else if (request.url === '/addStudent' && request.method === 'POST') {
+        const body = [];
+        request.on('data', (chunk) => {
+            body.push(chunk);
+        });
+        request.on('end', () => {
+            const parsedBody = Buffer.concat(body).toString();
+            let args = parsedBody.split('&');
+
+            let name = args[0].split('=')[1];
+            let dob = args[1].split('=')[1];
+
+            addStudent(name, dob);
+
+            response.statusCode = 302;
+            response.setHeader('Location', '/');
+            return response.end();
+        });
+    }
+
+    else if (url.parse(request.url).pathname === '/deleteStudent' && request.method === 'POST') {
+
+        const index = url.parse(request.url, true).query.index;
+
+        if (isNaN(index)) {
+            response.statusCode = 400;
+            return response.end();
+        }
+
+        deleteStudent(index);
+        
+        response.statusCode = 302;
+        response.setHeader('Location', '/students');
+        return response.end();
+    }
+
+    else if (request.url === '/students') {
+        response.end(generateStudentsPage());
     }
 
     else {
@@ -22,7 +57,6 @@ const server = createServer((request, response) => {
 });
 
 server.listen(process.env.APP_PORT, () => {
-    console.log(process.env)
     console.log(`Server started on port ${process.env.APP_PORT}`);
 });
 
