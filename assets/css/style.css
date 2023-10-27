@@ -1,0 +1,99 @@
+body {
+    background-color: #faf0ca;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    width: 500px;
+    background-color: #26547c;
+    padding: 15px;
+    border-radius: 15px;
+}
+
+nav {
+    border-radius: 15px 15px 0 0;
+    color : #0d3b66;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav a {
+    font-weight: 700;
+    text-decoration: none;
+}
+
+nav ul {
+    padding: 0;
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+    width: 100%;
+    margin: 0;
+}
+
+nav ul li {
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    border-radius: 15px 15px 0 0;
+}
+
+nav ul li a {
+    color: #0d3b66;
+}
+
+nav ul li:not(.activeTab) a {
+    color: white;
+}
+
+.activeTab {
+    background-color: #ffd166;
+}
+
+.addForm {
+    background-color: #ffd166;
+    padding: 10px;
+    margin: 0;
+    list-style: none;
+    border-radius:  0px 0px 15px 15px;
+}
+
+.addForm > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.addForm label {
+    font-weight: bold;
+    margin-right: 10px;
+    color: #0d3b66;
+}
+
+input {
+    margin-left: auto;
+}
+
+.btn {
+    background-color: #ef476f;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.studentItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    color: #0d3b66;
+}

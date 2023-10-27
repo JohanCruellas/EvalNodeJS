@@ -1,16 +1,35 @@
-<!-- FILEPATH: /c:/Users/jo-ha/Perso/3Wa/evalNodeJS/view/home.html -->
+<!DOCTYPE html>
+<html>
 
-<nav>
-    <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/students">Students</a></li>
-    </ul>
-</nav>
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+</head>
 
-<form action="/addStudent" method="POST">
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name"><br><br>
-    <label for="dob">Date of Birth:</label>
-    <input type="date" id="dob" name="dob"><br><br>
-    <input type="submit" value="Submit">
-</form>
+<body>
+    <div class="card">
+        <nav>
+            <ul>
+                <li class="activeTab"><a href="/">Home</a></li>
+                <li><a href="/students">Students</a></li>
+            </ul>
+        </nav>
+
+        <form action="/addStudent" method="POST" class="addForm">
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name"><br><br>
+            </div>
+            <div>
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" name="dob"><br><br>
+            </div>
+            <input type="submit" value="Submit" class="btn">
+        </form>
+    </div>
+
+    <link rel="stylesheet" href="/style.css">
+</body>
+
+</html>
